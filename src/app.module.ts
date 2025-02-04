@@ -8,6 +8,8 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { User } from './user/user.entity';
+import { PostModule } from './post/post.module';
+import { Post } from './post/post.entity';
 
 @Module({
   imports: [
@@ -27,7 +29,7 @@ import { User } from './user/user.entity';
           username: dbConfig.username,
           password: dbConfig.password,
           database: dbConfig.database,
-          entities: [User],
+          entities: [User, Post],
           synchronize: true,
           migrations: ['dist/migrations/*.js'],
           cli: {
@@ -38,6 +40,7 @@ import { User } from './user/user.entity';
     }),
     AuthModule,
     UserModule,
+    PostModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
+import { Post } from '../post/post.entity';
 
 @Entity()
 export class User {
@@ -16,5 +17,9 @@ export class User {
 
   @ApiProperty({ example: 'password123', description: 'Пароль користувача' })
   @Column()
-  password: string;
+  password?: string;
+
+  @ApiProperty({ type: () => [Post], description: 'Список постів користувача' })
+  @OneToMany(() => Post, (post) => post.user)
+  posts?: Post[];
 }

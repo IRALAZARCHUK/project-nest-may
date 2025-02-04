@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { UserModule } from '../user/user.module';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -22,6 +23,14 @@ import { UserModule } from '../user/user.module';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    JwtAuthGuard,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
+  exports: [AuthService, JwtAuthGuard],  // Тепер експортуємо тільки JwtAuthGuard
 })
 export class AuthModule {}
