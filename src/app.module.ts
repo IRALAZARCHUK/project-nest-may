@@ -13,7 +13,7 @@ import { User } from './user/user.entity';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [configuration], // Завантаження файлу конфігурації
+      load: [configuration],
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -28,7 +28,11 @@ import { User } from './user/user.entity';
           password: dbConfig.password,
           database: dbConfig.database,
           entities: [User],
-          synchronize: true, // Не використовуйте synchronize в продакшн середовищі
+          synchronize: true,
+          migrations: ['dist/migrations/*.js'],
+          cli: {
+            migrationsDir: 'src/migrations',
+          },
         };
       },
     }),
