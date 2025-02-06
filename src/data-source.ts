@@ -2,7 +2,7 @@ import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
 import configuration from './config/configuration';
 
-dotenv.config(); // Завантажуємо змінні середовища
+dotenv.config();
 
 const config = configuration();
 

@@ -33,7 +33,7 @@ export class PostController {
       throw new Error('User not authenticated');
     }
 
-    // Передаємо user з усіма полями, навіть якщо password або posts не присутні
+
     return this.postService.create(user, createPostDto);
   }
 
@@ -47,7 +47,7 @@ export class PostController {
       throw new Error('User not authenticated');
     }
 
-    // Передаємо user з усіма полями
+
     return this.postService.update(user, id, updatePostDto);
   }
 
@@ -61,7 +61,7 @@ export class PostController {
       throw new Error('User not authenticated');
     }
 
-    // Передаємо user з усіма полями
+
     return this.postService.remove(user, id);
   }
 }

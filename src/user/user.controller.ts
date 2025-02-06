@@ -25,7 +25,7 @@ export class UserController {
   }
 
   @ApiOperation({ summary: 'Перегляд списку користувачів з фільтрацією' })
-  @ApiBearerAuth() // Захищений ендпоінт (JWT Guard можна додати пізніше)
+  @ApiBearerAuth()
   @Get()
   async getAll(@Query() filterDto: FilterUserDto) {
     return this.userService.findAll(filterDto);
