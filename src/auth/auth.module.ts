@@ -31,6 +31,6 @@ import { APP_GUARD } from '@nestjs/core';
       useClass: JwtAuthGuard,
     },
   ],
-  exports: [AuthService, JwtAuthGuard],  // Тепер експортуємо тільки JwtAuthGuard
+  exports: [AuthService, JwtAuthGuard, JwtModule], // Додано JwtModule для експорту
 })
 export class AuthModule {}

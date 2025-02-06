@@ -97,3 +97,47 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+Цей проєкт є REST API, створеним за допомогою NestJS та бази даних PostgreSQL. API підтримує автентифікацію через JWT, управління користувачами та постами, а також має інтегровану документацію через Swagger.
+Запусти проєкт за допомогою команди:
+
+npm run start
+
+Проєкт буде доступний за адресою http://localhost:3000.
+
+Swagger-документація автоматично генерується та доступна за адресою: http://localhost:3000/api
+
+Приклади використання в Postman
+ декілька прикладів, як використовувати API через Postman:
+
+1. Реєстрація користувача
+   Метод: POST
+   URL: http://localhost:3000/users/register
+{
+   "email": "hdsaa@example.com",
+   "password": "qwerty123"
+}
+2. Авторизація (логін)
+   Метод: POST
+   URL: http://localhost:3000/auth/login
+{
+   "email": "hdsaa@example.com",
+   "password": "qwerty123"
+}
+При успішному вході повертається JWT-токен:
+
+3. Створення посту
+   Метод: POST
+   URL: http://localhost:3000/posts
+    Authorization: Bearer <access_token>
+{
+"text": "Це мій перший пост!"
+}
+4. Редагування посту
+   Метод: PUT
+   URL: http://localhost:3000/posts/<id>
+   Authorization: Bearer <access_token>
+   
+{
+"text": "Оновлений текст посту"
+}
